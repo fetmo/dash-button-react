@@ -120,7 +120,7 @@ class ProductContainer extends Component {
     onDragStop() {
         setTimeout(() => {
             this.setState({dragging: false});
-        }, 500);
+        }, 1500);
     }
 
     openModal() {
