@@ -118,7 +118,9 @@ class ProductContainer extends Component {
     }
 
     onDragStop() {
-        setTimeout(() => this.setState({dragging: false}), 1500);
+        setTimeout(() => {
+            this.setState({dragging: false});
+        }, 500);
     }
 
     openModal() {
@@ -136,7 +138,11 @@ class ProductContainer extends Component {
                 infinite: true,
                 autoplay: false,
                 swipeToSlide: true,
-                slidesToShow: 1
+                slidesToShow: 1,
+                onSwipe: () => {
+                    this.onDragStart();
+                    this.onDragStop();
+                }
             },
             modalProduct = '';
 
@@ -168,8 +174,7 @@ class ProductContainer extends Component {
                     <Slider {...sliderSettings}>
                         {this.state.products.map(product =>
                             <ProductBox key={product.id} product={product}
-                                        clickFunc={this.onBoxClick.bind(this)}
-                                        dragStart={this.onDragStart.bind(this)} dragStop={this.onDragStop.bind(this)}/>
+                                        clickFunc={this.onBoxClick.bind(this)}/>
                         )}
                     </Slider>
                     {modalProduct
