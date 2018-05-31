@@ -1,0 +1,54 @@
+.ModalProduct {
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    left: 50%;
+    padding: 20px 20px 10px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+}
+
+
+.ModalProduct .Title{
+    text-align: center;
+}
+
+.ModalProduct .Content .Line{
+    box-sizing: border-box;
+    clear: both;
+    display: block;
+    height: auto;
+    overflow: visible;
+    padding: 5px 0;
+    width: 100%;
+}
+
+.ModalProduct .Content .Line:before,
+.ModalProduct .Content .Line:after{
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+.ModalProduct .Content .Line:after{
+    clear: both;
+}
+
+.ModalProduct .Content .Line .Label {
+    clear: left;
+    float: left;
+}
+
+.ModalProduct .Content .Line .Value {
+    clear: right;
+    float: right;
+}
+
+.ModalProduct .Content button {
+    border-radius: 15px;
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px;
+}

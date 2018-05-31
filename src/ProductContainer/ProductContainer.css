@@ -1,19 +1,12 @@
 .ProductContainer {
-
+    box-sizing: border-box;
+    display: block;
+    height: 320px;
+    width: 480px
 }
 
 .ProductContainer .Title {
+    margin-bottom: 0.3em;
     text-align: center;
     width: 100%;
-}
-
-.ProductContainer .SliderBox{
-    height: 210px;
-    overflow: scroll;
-    width: 480px;
-}
-
-.ProductContainer .SliderBox .Container {
-    width: 1000000px;
-    height: 210px;
 }

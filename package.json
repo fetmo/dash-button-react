@@ -7,7 +7,9 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-formatted-amount": "^1.4.1",
-    "react-scripts": "1.1.4"
+    "react-overlays": "^0.8.3",
+    "react-scripts": "1.1.4",
+    "react-slick": "^0.23.1"
   },
   "scripts": {
     "start": "react-scripts start",
