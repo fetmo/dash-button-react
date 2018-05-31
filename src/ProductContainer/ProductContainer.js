@@ -131,6 +131,12 @@ class ProductContainer extends Component {
         this.setState({showModal: false, message: null});
     }
 
+    closeTab() {
+        if(window.confirm('Fenster schließen?')){
+            window.close();
+        }
+    }
+
     render() {
 
         let sliderSettings = {
@@ -169,6 +175,7 @@ class ProductContainer extends Component {
 
         return (
             <div className="ProductContainer">
+                <button className="CloseWindow" onClick={this.closeTab}>X</button>
                 <h1 className="Title">{`Produkte`}</h1>
                 <div className="clearfix SliderBox">
                     <Slider {...sliderSettings}>
