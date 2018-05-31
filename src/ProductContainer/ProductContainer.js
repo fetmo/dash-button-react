@@ -115,7 +115,7 @@ class ProductContainer extends Component {
                 infinite: true,
                 autoplay: false,
                 swipeToSlide: true,
-                slidesToShow: 2
+                slidesToShow: 1
             },
             modalProduct = '';
 
