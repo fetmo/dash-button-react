@@ -20,6 +20,15 @@ class ProductContainer extends Component {
     }
 
     componentDidMount() {
+        setInterval(() => {
+            console.log('Refresh');
+            console.log(Date.now());
+            this.fetchProducts()
+        }, 5 * 60 * 1000);
+        this.fetchProducts();
+    }
+
+    fetchProducts(){
         this.authButton().then(token => this.loadProducts(token));
     }
 
@@ -86,6 +95,10 @@ class ProductContainer extends Component {
         let identifier = product.identifier,
             me = this, modalProduct;
 
+        if(me.state.dragging){
+            return;
+        }
+
         this.authButton().then(token => {
             me.getProducts(token).then(products => {
                 products.forEach((el) => {
@@ -100,12 +113,20 @@ class ProductContainer extends Component {
         })
     }
 
+    onDragStart() {
+        this.setState({dragging: true});
+    }
+
+    onDragStop() {
+        setTimeout(() => this.setState({dragging: false}), 500);
+    }
+
     openModal() {
         this.setState({showModal: true});
     }
 
     closeModal() {
-        this.setState({showModal: false});
+        this.setState({showModal: false, message: null});
     }
 
     render() {
@@ -146,7 +167,9 @@ class ProductContainer extends Component {
                 <div className="clearfix SliderBox">
                     <Slider {...sliderSettings}>
                         {this.state.products.map(product =>
-                            <ProductBox key={product.id} product={product} clickFunc={this.onBoxClick.bind(this)}/>
+                            <ProductBox key={product.id} product={product}
+                                        clickFunc={this.onBoxClick.bind(this)}
+                                        dragStart={this.onDragStart.bind(this)} dragStop={this.onDragStop.bind(this)}/>
                         )}
                     </Slider>
                     {modalProduct

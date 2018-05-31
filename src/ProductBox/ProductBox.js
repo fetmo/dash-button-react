@@ -10,10 +10,12 @@ class ProductBox extends Component {
 
     render() {
         let product = this.props.product,
-            clickFunc = this.props.clickFunc;
+            clickFunc = this.props.clickFunc,
+            drag = this.props.dragStart, dragStop = this.props.dragStop;
 
         return (
-            <div className="ProductBox" onClick={event => clickFunc(product)}>
+            <div className="ProductBox" onDrag={event => drag()} onDragEnd={event => dragStop()}
+                 onClick={event => clickFunc(product)}>
                 <p className="Title">
                     <strong>{product.title}</strong>
                 </p>
