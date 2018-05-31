@@ -6,3 +6,14 @@
     text-align: center;
     width: 100%;
 }
+
+.ProductContainer .SliderBox{
+    height: 210px;
+    overflow: scroll;
+    width: 480px;
+}
+
+.ProductContainer .SliderBox .Container {
+    width: 1000000px;
+    height: 210px;
+}

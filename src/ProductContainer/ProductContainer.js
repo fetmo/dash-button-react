@@ -40,13 +40,19 @@ class FetchDemo extends Component {
     }
 
     render() {
+        let containerStyle = {
+            width: (262 * this.state.products.length) + 'px'
+        };
+
         return (
             <div className="ProductContainer">
                 <h1 className="Title">{`Produkte`}</h1>
-                <div>
-                    {this.state.products.map(product =>
-                        <ProductBox product={product} />
-                    )}
+                <div className="clearfix SliderBox">
+                    <div className="Container" style={containerStyle}>
+                        {this.state.products.map(product =>
+                            <ProductBox product={product} />
+                        )}
+                    </div>
                 </div>
             </div>
         );
