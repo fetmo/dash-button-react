@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios/index";
-import ProductBox from './ProductBox/ProductBox';
+import ProductBox from '../ProductBox/ProductBox';
+import './ProductContainer.css';
 
 class FetchDemo extends Component {
 
@@ -40,13 +41,13 @@ class FetchDemo extends Component {
 
     render() {
         return (
-            <div>
-                <h1>{`Produkte`}</h1>
-                <ul>
+            <div className="ProductContainer">
+                <h1 className="Title">{`Produkte`}</h1>
+                <div>
                     {this.state.products.map(product =>
                         <ProductBox product={product} />
                     )}
-                </ul>
+                </div>
             </div>
         );
     }
