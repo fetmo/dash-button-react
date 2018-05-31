@@ -19,7 +19,7 @@ class ProductBox extends Component {
                 </p>
                 <p className="Content">
                     <span className="Line">
-                        <span className="Label">Stückreis:</span>
+                        <span className="Label">Stückpreis:</span>
                         <span className="Value"><FormattedAmount lang="en" amount={this.priceToCents(product.price)} currency={'€'} separator={','}/></span>
                     </span>
                     <span className="Line">
