@@ -28,7 +28,7 @@ class ProductContainer extends Component {
         this.fetchProducts();
     }
 
-    fetchProducts(){
+    fetchProducts() {
         this.authButton().then(token => this.loadProducts(token));
     }
 
@@ -36,7 +36,9 @@ class ProductContainer extends Component {
         let products = this.getProducts(token);
 
         products.then(data => {
-            this.setState({products: data});
+            if(typeof data !== 'undefined'){
+                this.setState({products: data});
+            }
         });
     }
 
@@ -48,7 +50,7 @@ class ProductContainer extends Component {
         }).then(res => {
             let product = res.data.product;
 
-            if (!Array.isArray(product)) {
+            if (!Array.isArray(product) && typeof data !== 'undefined') {
                 product = [product];
             }
 
@@ -95,7 +97,7 @@ class ProductContainer extends Component {
         let identifier = product.identifier,
             me = this, modalProduct;
 
-        if(me.state.dragging){
+        if (me.state.dragging) {
             return;
         }
 
@@ -132,7 +134,7 @@ class ProductContainer extends Component {
     }
 
     closeTab() {
-        if(window.confirm('Fenster schließen?')){
+        if (window.confirm('Fenster schließen?')) {
             window.close();
         }
     }
@@ -178,12 +180,15 @@ class ProductContainer extends Component {
                 <button className="CloseWindow" onClick={this.closeTab}>X</button>
                 <h1 className="Title">{`Produkte`}</h1>
                 <div className="clearfix SliderBox">
-                    <Slider {...sliderSettings}>
-                        {this.state.products.map(product =>
-                            <ProductBox key={product.id} product={product}
-                                        clickFunc={this.onBoxClick.bind(this)}/>
-                        )}
-                    </Slider>
+                    {this.state.products
+                        ?
+                        <Slider {...sliderSettings}>
+                            {this.state.products.map(product =>
+                                <ProductBox key={product.id} product={product}
+                                            clickFunc={this.onBoxClick.bind(this)}/>
+                            )}
+                        </Slider>
+                        : ''}
                     {modalProduct
                         ?
                         <Modal
