@@ -50,7 +50,7 @@ class ProductContainer extends Component {
         }).then(res => {
             let product = res.data.product;
 
-            if (!Array.isArray(product) && typeof data !== 'undefined') {
+            if (!Array.isArray(product) && typeof product !== 'undefined') {
                 product = [product];
             }
 
